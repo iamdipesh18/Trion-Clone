@@ -1,0 +1,219 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Trionn Dark Theme - Primary Colors */
+    --background: 220 20% 10%;
+    --foreground: 165 60% 90%;
+
+    --card: 220 20% 12%;
+    --card-foreground: 165 60% 90%;
+
+    --popover: 220 20% 12%;
+    --popover-foreground: 165 60% 90%;
+
+    /* Mint/Cyan Accent - Trionn signature color */
+    --primary: 165 60% 70%;
+    --primary-foreground: 220 20% 10%;
+
+    --secondary: 220 15% 18%;
+    --secondary-foreground: 165 60% 90%;
+
+    --muted: 220 15% 20%;
+    --muted-foreground: 220 10% 50%;
+
+    --accent: 165 60% 70%;
+    --accent-foreground: 220 20% 10%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 15% 20%;
+    --input: 220 15% 18%;
+    --ring: 165 60% 70%;
+
+    --radius: 0.5rem;
+
+    /* Custom Trionn Colors */
+    --trionn-dark: 220 20% 8%;
+    --trionn-darker: 220 25% 6%;
+    --trionn-mint: 165 60% 70%;
+    --trionn-mint-dim: 165 40% 50%;
+    --trionn-text-dim: 220 10% 45%;
+    --trionn-border: 220 15% 18%;
+
+    /* Sidebar Variables */
+    --sidebar-background: 220 20% 8%;
+    --sidebar-foreground: 165 60% 90%;
+    --sidebar-primary: 165 60% 70%;
+    --sidebar-primary-foreground: 220 20% 10%;
+    --sidebar-accent: 220 15% 18%;
+    --sidebar-accent-foreground: 165 60% 90%;
+    --sidebar-border: 220 15% 18%;
+    --sidebar-ring: 165 60% 70%;
+  }
+
+  .dark {
+    --background: 220 20% 10%;
+    --foreground: 165 60% 90%;
+    --card: 220 20% 12%;
+    --card-foreground: 165 60% 90%;
+    --popover: 220 20% 12%;
+    --popover-foreground: 165 60% 90%;
+    --primary: 165 60% 70%;
+    --primary-foreground: 220 20% 10%;
+    --secondary: 220 15% 18%;
+    --secondary-foreground: 165 60% 90%;
+    --muted: 220 15% 20%;
+    --muted-foreground: 220 10% 50%;
+    --accent: 165 60% 70%;
+    --accent-foreground: 220 20% 10%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 220 15% 20%;
+    --input: 220 15% 18%;
+    --ring: 165 60% 70%;
+    --sidebar-background: 220 20% 8%;
+    --sidebar-foreground: 165 60% 90%;
+    --sidebar-primary: 165 60% 70%;
+    --sidebar-primary-foreground: 220 20% 10%;
+    --sidebar-accent: 220 15% 18%;
+    --sidebar-accent-foreground: 165 60% 90%;
+    --sidebar-border: 220 15% 18%;
+    --sidebar-ring: 165 60% 70%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .trionn-heading {
+    @apply text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-tight;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+
+  .trionn-subheading {
+    @apply text-2xl md:text-3xl lg:text-4xl font-medium leading-relaxed;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+
+  .trionn-body {
+    @apply text-base md:text-lg text-muted-foreground leading-relaxed;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .trionn-label {
+    @apply text-sm uppercase tracking-widest text-primary;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+
+  .trionn-section {
+    @apply py-20 md:py-32 px-6 md:px-12 lg:px-20;
+  }
+
+  .trionn-container {
+    @apply max-w-7xl mx-auto;
+  }
+
+  .trionn-card {
+    @apply bg-card rounded-2xl border border-border overflow-hidden transition-all duration-500 hover:border-primary/30;
+  }
+
+  .trionn-gradient-border {
+    @apply relative;
+    background: linear-gradient(135deg, hsl(var(--trionn-dark)), hsl(var(--card)));
+  }
+
+  .trionn-gradient-border::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    padding: 1px;
+    border-radius: inherit;
+    background: linear-gradient(135deg, hsl(var(--primary) / 0.3), transparent, hsl(var(--primary) / 0.1));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  .trionn-stat-number {
+    @apply text-5xl md:text-7xl font-bold text-primary;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+
+  .trionn-link {
+    @apply text-foreground hover:text-primary transition-colors duration-300 cursor-pointer;
+  }
+
+  .trionn-button-primary {
+    @apply inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-full font-medium transition-all duration-300 hover:bg-primary/90 hover:scale-105;
+  }
+
+  .trionn-button-outline {
+    @apply inline-flex items-center gap-2 px-6 py-3 border border-primary/50 text-primary rounded-full font-medium transition-all duration-300 hover:bg-primary/10 hover:border-primary;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--foreground)));
+  }
+
+  .text-dim {
+    color: hsl(var(--trionn-text-dim));
+  }
+
+  .bg-trionn-dark {
+    background-color: hsl(var(--trionn-dark));
+  }
+
+  .bg-trionn-darker {
+    background-color: hsl(var(--trionn-darker));
+  }
+
+  .marquee {
+    display: flex;
+    overflow: hidden;
+    user-select: none;
+  }
+
+  .marquee-content {
+    display: flex;
+    animation: marquee 20s linear infinite;
+  }
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
